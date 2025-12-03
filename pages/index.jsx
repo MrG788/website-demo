@@ -1,80 +1,80 @@
 import React from "react";
 
 export default function Home() {
-  const shop = {
-    name: "Hearth & Bean Coffee Co.",
-    tagline: "Small batch coffee, fresh pastries, warm community",
-    phone: "+44 7857 480130",
-    email: "hello@hearthbean.co.uk",
-    address: "14 Market Street, Skelmersdale, WN8 8DU",
-  };
+  const menu = [
+    { name: "Flat White", price: "£3.40", img: "https://images.unsplash.com/photo-1503481766315-7a586b20f66d?q=80&w=600" },
+    { name: "Vanilla Cold Brew", price: "£3.80", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=600" },
+    { name: "Spiced Mocha", price: "£4.10", img: "https://images.unsplash.com/photo-1494314671902-399b18174975?q=80&w=600" },
+  ];
 
   return (
-    <main style={{
-      fontFamily: "Arial, sans-serif",
-      backgroundColor: "#fff8e6",
-      color: "#2a2a2a",
-      maxWidth: "1000px",
-      margin: "0 auto",
-      padding: "20px"
-    }}>
-      
-      <header style={{ textAlign: "center", marginBottom: "50px" }}>
-        <h1 style={{ fontSize: "48px", marginBottom: "10px" }}>{shop.name}</h1>
-        <p style={{ fontSize: "20px", color: "#555" }}>{shop.tagline}</p>
-      </header>
+    <main className="bg-amber-50 min-h-screen text-neutral-900 font-sans">
 
-      <section style={{ marginBottom: "40px" }}>
-        <h2 style={{ fontSize: "28px", marginBottom: "10px" }}>Signature Drinks</h2>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "20px"
-        }}>
-          {[
-            { title: "Flat White", price: "£3.40", img: "https://images.unsplash.com/photo-1503481766315-7a586b20f66d?q=80&w=600" },
-            { title: "Vanilla Cold Brew", price: "£3.80", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=600" },
-            { title: "Spiced Mocha", price: "£4.10", img: "https://images.unsplash.com/photo-1494314671902-399b18174975?q=80&w=600" }
-          ].map((item, i) => (
-            <div key={i} style={{
-              background: "white",
-              borderRadius: "10px",
-              overflow: "hidden",
-              border: "1px solid #ddd"
-            }}>
-              <img src={item.img} alt={item.title} style={{ width: "100%", height: "180px", objectFit: "cover" }} />
-              <div style={{ padding: "12px" }}>
-                <h3 style={{ margin: "0 0 5px" }}>{item.title}</h3>
-                <p style={{ margin: 0, color: "#444" }}>{item.price}</p>
+      {/* Hero */}
+      <section className="relative h-[60vh] flex items-center justify-center">
+        <img 
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000&auto=format&fit=crop"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50"></div>
+        <h1 className="relative text-white text-5xl font-bold tracking-tight">
+          Hearth & Bean Coffee
+        </h1>
+      </section>
+
+      {/* Menu grid */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <h2 className="text-3xl font-bold mb-6">Signature Drinks</h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {menu.map((item, i) => (
+            <div key={i} className="bg-white border rounded-2xl overflow-hidden shadow-sm">
+              <img src={item.img} className="h-52 w-full object-cover" />
+              <div className="p-4 flex justify-between items-center">
+                <span className="font-semibold">{item.name}</span>
+                <span className="font-medium">{item.price}</span>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section style={{ marginBottom: "40px" }}>
-        <h2 style={{ fontSize: "28px", marginBottom: "10px" }}>About Us</h2>
-        <p style={{ lineHeight: "1.6", color: "#444" }}>
-          We began as a weekend market stall and now have a cosy cafe and micro-roastery.
-          Our beans are roasted in small batches and dialled in daily for the perfect cup.
-        </p>
-      </section>
-
-      <section style={{ marginBottom: "40px" }}>
-        <h2 style={{ fontSize: "28px", marginBottom: "10px" }}>Visit Us</h2>
-        <div style={{ background: "white", padding: "15px", borderRadius: "10px", border: "1px solid #ddd" }}>
-          <p><strong>Address:</strong> {shop.address}</p>
-          <p><strong>Phone:</strong> {shop.phone}</p>
-          <p><strong>Email:</strong> {shop.email}</p>
+      {/* About section */}
+      <section className="max-w-6xl mx-auto px-6 pb-12 grid md:grid-cols-2 gap-10 items-center">
+        <img 
+          src="https://images.unsplash.com/photo-1521017432531-fbd92d090162?q=80&w=1200"
+          className="rounded-2xl shadow-md object-cover"
+        />
+        <div>
+          <h2 className="text-3xl font-bold mb-4">Our Story</h2>
+          <p className="text-neutral-700 leading-relaxed">
+            We began as a weekend market stall and now have a cosy cafe and micro roastery.
+            Our beans are roasted in small batches and dialled in daily for the perfect cup.
+          </p>
         </div>
       </section>
 
-      <footer style={{ textAlign: "center", marginTop: "40px", fontSize: "14px", color: "#777" }}>
-        © {new Date().getFullYear()} {shop.name}. All rights reserved.
+      {/* Visit section */}
+      <section className="bg-white border-t py-12">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">Visit Us</h2>
+            <p>14 Market Street, Skelmersdale, WN8 8DU</p>
+            <p className="mt-2">📞 +44 7857 480130</p>
+            <p className="mt-1">📧 hello@hearthbean.co.uk</p>
+          </div>
+          <img 
+            className="rounded-2xl shadow-md object-cover"
+            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1600"
+          />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center py-6 text-neutral-600 text-sm border-t">
+        © {new Date().getFullYear()} Hearth & Bean Coffee Co. All rights reserved.
       </footer>
+
     </main>
   );
 }
-
-
-
